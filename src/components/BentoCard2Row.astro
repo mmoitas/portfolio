@@ -1,0 +1,39 @@
+---
+interface Props {
+	dividers?: boolean;
+}
+
+const { dividers = false } = Astro.props;
+---
+
+<div class="bento-card-2row" data-dividers={dividers ? '' : undefined}>
+	<div class="text-slot"><slot name="text" /></div>
+	<div class="media-slot"><slot name="media" /></div>
+</div>
+
+<style>
+	.bento-card-2row {
+		display: flex;
+		flex-direction: column;
+		gap: var(--padding-large);
+		width: 100%;
+		box-sizing: border-box;
+		padding: var(--padding-xlarge) var(--padding-large);
+	}
+
+	.bento-card-2row[data-dividers] {
+		border-right: var(--stroke-size-default) solid var(--stroke-color-primary);
+	}
+
+	.text-slot,
+	.media-slot {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		width: 100%;
+	}
+
+	.text-slot :global(.text-body-default) {
+		max-width: 640px;
+	}
+</style>

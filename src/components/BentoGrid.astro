@@ -1,0 +1,44 @@
+---
+interface Props {
+	dividers?: boolean;
+}
+
+const { dividers = false } = Astro.props;
+---
+
+<div class="bento-grid" data-dividers={dividers ? '' : undefined}>
+	<div class="bento-grid-row">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.bento-grid {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		max-width: 1440px;
+	}
+
+	.bento-grid[data-dividers] {
+		border-bottom: var(--stroke-size-default) solid var(--stroke-color-primary);
+	}
+
+	.bento-grid-row {
+		display: flex;
+		align-items: stretch;
+		width: 100%;
+	}
+
+	/* 1 or 2 Bento Cards can be slotted in; each takes an equal share of the row. */
+	.bento-grid-row > :global(*) {
+		flex: 1 0 0;
+		min-width: 0;
+	}
+
+	@media (max-width: 768px) {
+		.bento-grid-row {
+			flex-direction: column;
+		}
+	}
+</style>
