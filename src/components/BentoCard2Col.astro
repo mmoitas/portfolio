@@ -30,8 +30,15 @@ const { dividers = false } = Astro.props;
 		display: flex;
 		flex-direction: column;
 		gap: var(--space-4);
-		flex: 1 0 0;
 		min-width: 0;
+	}
+
+	.text-slot {
+		flex: 40 0 0;
+	}
+
+	.media-slot {
+		flex: 60 0 0;
 	}
 
 	.text-slot :global(.text-body-default) {
