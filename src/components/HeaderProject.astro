@@ -1,0 +1,86 @@
+---
+type BackgroundVariant = '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10';
+
+interface Props {
+	background: BackgroundVariant;
+}
+
+const { background } = Astro.props;
+---
+
+<header class="header-project" style={`background-color: var(--brand-${background});`}>
+	<div class="content">
+		<div class="text-slot">
+			<p class="text-display-2"><slot name="title">This is a project title</slot></p>
+			<div class="text-body-large">
+				<slot name="body">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec mi et nulla
+					maximus posuere. Sed vitae ipsum placerat, finibus tortor et, faucibus sem.
+				</slot>
+			</div>
+		</div>
+		<div class="media-slot"><slot name="media" /></div>
+	</div>
+</header>
+
+<style>
+	.header-project {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		box-sizing: border-box;
+		overflow: hidden;
+		padding: var(--padding-large);
+	}
+
+	.content {
+		display: flex;
+		align-items: center;
+		gap: var(--padding-medium);
+		width: 100%;
+	}
+
+	.text-slot {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-2);
+		flex: 1 0 0;
+		min-width: 0;
+		max-width: 640px;
+		word-break: break-word;
+	}
+
+	.text-slot .text-display-2,
+	.text-slot .text-body-large {
+		width: 100%;
+	}
+
+	.media-slot {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 1 0 0;
+		min-width: 0;
+	}
+
+	.media-slot :global(img),
+	.media-slot :global(video),
+	.media-slot :global(svg) {
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+	}
+
+	@media (max-width: 768px) {
+		.content {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.text-slot {
+			max-width: none;
+		}
+	}
+</style>

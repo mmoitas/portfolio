@@ -5,14 +5,38 @@
 	--text-color-primary: #151515;
 	--stroke-color-primary: #151515;
 
+	/* Brand (Header background variants) */
+	--brand-1: #00ff90;
+	--brand-2: #6d89ff;
+	--brand-3: #ff875b;
+	--brand-4: #f4bbff;
+	--brand-5: #ff5b76;
+	--brand-6: #ffc252;
+	--brand-7: #00bfff;
+	--brand-8: #bb74ff;
+	--brand-9: #14b8a6;
+	--brand-10: #f98798;
+
 	/* Font family */
 	--font-family-display: 'Special Gothic Expanded One', sans-serif;
 	--font-family-body: 'Special Gothic', sans-serif;
 
 	/* Type styles */
+	--display-1-font-size: 72px;
+	--display-1-line-height: 1;
+	--display-1-font-weight: 400;
+
+	--display-2-font-size: 48px;
+	--display-2-line-height: 1.2;
+	--display-2-font-weight: 400;
+
 	--display-3-font-size: 32px;
 	--display-3-line-height: 1.2;
 	--display-3-font-weight: 400;
+
+	--body-large-font-size: 20px;
+	--body-large-line-height: 1.4;
+	--body-large-font-weight: 400;
 
 	--body-default-font-size: 16px;
 	--body-default-line-height: 1.4;
@@ -22,9 +46,15 @@
 	--body-small-line-height: 1.4;
 	--body-small-font-weight: 400;
 
+	--pretitle-font-size: 16px;
+	--pretitle-line-height: 1;
+	--pretitle-font-weight: 700;
+
 	/* Spacing */
+	--space-2: 8px;
 	--space-4: 16px;
-	--padding-large: 24px;
+	--padding-medium: 24px;
+	--padding-large: 48px;
 	--padding-xlarge: 56px;
 
 	/* Stroke */
@@ -34,6 +64,24 @@
 /* Typography utilities matching Figma text styles. Apply to whatever
    element (h2, h3, p, ...) is appropriate for the content in context. */
 
+.text-display-1 {
+	margin: 0;
+	font-family: var(--font-family-display);
+	font-size: var(--display-1-font-size);
+	line-height: var(--display-1-line-height);
+	font-weight: var(--display-1-font-weight);
+	color: var(--text-color-primary);
+}
+
+.text-display-2 {
+	margin: 0;
+	font-family: var(--font-family-display);
+	font-size: var(--display-2-font-size);
+	line-height: var(--display-2-line-height);
+	font-weight: var(--display-2-font-weight);
+	color: var(--text-color-primary);
+}
+
 .text-display-3 {
 	margin: 0;
 	font-family: var(--font-family-display);
@@ -41,6 +89,27 @@
 	line-height: var(--display-3-line-height);
 	font-weight: var(--display-3-font-weight);
 	color: var(--text-color-primary);
+}
+
+.text-body-large {
+	margin: 0;
+	font-family: var(--font-family-body);
+	font-size: var(--body-large-font-size);
+	line-height: var(--body-large-line-height);
+	font-weight: var(--body-large-font-weight);
+	color: var(--text-color-primary);
+	font-variation-settings: 'wdth' 100;
+}
+
+.text-pretitle {
+	margin: 0;
+	font-family: var(--font-family-body);
+	font-size: var(--pretitle-font-size);
+	line-height: var(--pretitle-line-height);
+	font-weight: var(--pretitle-font-weight);
+	color: var(--text-color-primary);
+	text-transform: uppercase;
+	font-variation-settings: 'wdth' 100;
 }
 
 .text-body-default {

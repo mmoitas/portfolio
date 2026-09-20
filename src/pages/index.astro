@@ -1,4 +1,5 @@
 ---
+import HeaderMain from '../components/HeaderMain.astro';
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
@@ -7,5 +8,16 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<HeaderMain>
+		<Fragment slot="pretitle">Product designer and Illustrator</Fragment>
+		<Fragment slot="name">Marcos Moitas</Fragment>
+		<Fragment slot="description">
+			Director of Product Design with 20+ years of experience and a combination of
+			strategic leadership and deep IC craft. Currently leading a 12-person
+			multidisciplinary design organization at H&amp;R Block for Small Business.
+		</Fragment>
+		<Fragment slot="media">
+			<img src="/images/header-main-illustration.svg" alt="" />
+		</Fragment>
+	</HeaderMain>
 </Layout>

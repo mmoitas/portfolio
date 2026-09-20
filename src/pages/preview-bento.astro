@@ -3,9 +3,23 @@ import Layout from '../layouts/Layout.astro';
 import BentoGrid from '../components/BentoGrid.astro';
 import BentoCard2Col from '../components/BentoCard2Col.astro';
 import BentoCard2Row from '../components/BentoCard2Row.astro';
+import HeaderProject from '../components/HeaderProject.astro';
 ---
 
 <Layout>
+	<HeaderProject background="2">
+		<Fragment slot="title">Project title (2)</Fragment>
+		<Fragment slot="body">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec mi et nulla
+			maximus posuere. Sed vitae ipsum placerat, finibus tortor et, faucibus sem.
+		</Fragment>
+		<Fragment slot="media">
+			<img
+				src="https://placehold.co/1070x864/eeeeee/151515?text=media+2"
+				alt="Placeholder media"
+			/>
+		</Fragment>
+	</HeaderProject>
 	<BentoGrid dividers>
 		<BentoCard2Col dividers>
 			<Fragment slot="text">

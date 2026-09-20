@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeaderMain from '../components/HeaderMain.astro';
+import HeaderProject from '../components/HeaderProject.astro';
+
+const backgrounds = ['2', '3', '4', '5', '6', '7', '8', '9', '10'] as const;
+---
+
+<Layout>
+	<HeaderMain>
+		<Fragment slot="pretitle">Product designer and Illustrator</Fragment>
+		<Fragment slot="name">Marcos Moitas</Fragment>
+		<Fragment slot="description">
+			Director of Product Design with 20+ years of experience and a combination of
+			strategic leadership and deep IC craft. Currently leading a 12-person
+			multidisciplinary design organization at H&amp;R Block for Small Business.
+		</Fragment>
+		<Fragment slot="media">
+			<img src="/images/header-main-illustration.svg" alt="" />
+		</Fragment>
+	</HeaderMain>
+
+	{
+		backgrounds.map((background) => (
+			<HeaderProject background={background}>
+				<Fragment slot="title">Project title ({background})</Fragment>
+				<Fragment slot="body">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec mi et nulla
+					maximus posuere. Sed vitae ipsum placerat, finibus tortor et, faucibus sem.
+				</Fragment>
+				<Fragment slot="media">
+					<img
+						src={`https://placehold.co/1070x864/eeeeee/151515?text=media+${background}`}
+						alt="Placeholder media"
+					/>
+				</Fragment>
+			</HeaderProject>
+		))
+	}
+</Layout>
