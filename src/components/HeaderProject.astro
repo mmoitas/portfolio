@@ -29,9 +29,38 @@ const { background } = Astro.props;
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
+		max-width: 1920px;
 		box-sizing: border-box;
 		overflow: hidden;
-		padding: var(--padding-large);
+		padding: var(--padding-xlarge);
+		margin: 0 auto;
+		background-image: 
+			url(../assets/base/frame-left.png), 
+			url(../assets/base/frame-right.png), 
+			url(../assets/base/frame-top.png), 
+			url(../assets/base/frame-bottom.png),
+			url(../assets/base/tl-corner.png),
+			url(../assets/base/tr-corner.png),
+			url(../assets/base/bl-corner.png),
+			url(../assets/base/br-corner.png);
+			background-position: 
+			left top, 
+			right top, 
+			center top, 
+			center bottom, 
+			left top, 
+			right top,
+			left bottom, 
+			right bottom;
+		background-repeat: 
+			repeat-y, 
+			repeat-y, 
+			repeat-x, 
+			repeat-x, 
+			no-repeat,
+			no-repeat,
+			no-repeat,
+			no-repeat;
 	}
 
 	.content {
