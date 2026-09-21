@@ -1,0 +1,65 @@
+---
+export interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<nav class:list={['navigation', className]} aria-label="Primary">
+	<div class="left-actions">
+		<button
+			type="button"
+			class="nav-button"
+			aria-haspopup="true"
+			aria-expanded="false"
+			aria-label="Open menu"
+		>
+			<img src="/images/icons/nav-small.svg" alt="" class="nav-icon" width="32" height="32" />
+		</button>
+		<a href="/" class="site-name">
+			<img src="/images/icons/head-medium.svg" alt="" class="site-icon" width="48" height="48" />
+			<p class="text-nav-title"><slot>Marcos Moitas</slot></p>
+		</a>
+	</div>
+</nav>
+
+<style>
+	.navigation {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		padding: var(--space-4) var(--space-10);
+		background-color: var(--surface-color-0);
+	}
+
+	.left-actions {
+		display: flex;
+		align-items: center;
+		gap: var(--space-8);
+	}
+
+	.nav-button {
+		display: flex;
+		align-items: center;
+		padding: 0;
+		border: none;
+		background: none;
+		cursor: pointer;
+	}
+
+	.nav-icon {
+		display: block;
+	}
+
+	.site-name {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		text-decoration: none;
+	}
+
+	.site-icon {
+		display: block;
+	}
+</style>

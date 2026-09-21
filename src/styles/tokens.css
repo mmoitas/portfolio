@@ -4,6 +4,7 @@
 	/* Color */
 	--text-color-primary: #151515;
 	--stroke-color-primary: #151515;
+	--surface-color-0: #f0f0ef;
 
 	/* Brand (Header background variants) */
 	--brand-0: #f0f0ef;
@@ -51,12 +52,20 @@
 	--pretitle-line-height: 1;
 	--pretitle-font-weight: 700;
 
+	--nav-title-font-size: 24px;
+	--nav-title-line-height: 1;
+	--nav-title-font-weight: 400;
+
 	/* Spacing */
 	--space-2: 8px;
 	--space-4: 16px;
-	--padding-medium: 24px;
-	--padding-large: 48px;
-	--padding-xlarge: 56px;
+	--space-5: 20px;
+	--space-6: 24px;
+	--space-8: 32px;
+	--space-10: 40px;
+	--space-12: 48px;
+	--space-14: 56px;
+	--space-16: 64px;
 
 	/* Stroke */
 	--stroke-size-default: 1px;
@@ -131,4 +140,14 @@
 	font-weight: var(--body-small-font-weight);
 	color: var(--text-color-primary);
 	font-variation-settings: 'wdth' 100;
+}
+
+.text-nav-title {
+	margin: 0;
+	font-family: var(--font-family-display);
+	font-size: var(--nav-title-font-size);
+	line-height: var(--nav-title-line-height);
+	font-weight: var(--nav-title-font-weight);
+	color: var(--text-color-primary);
+	white-space: nowrap;
 }
