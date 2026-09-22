@@ -30,9 +30,8 @@ const { background } = Astro.props;
 		align-items: center;
 		width: 100%;
 		max-width: 1920px;
-		box-sizing: border-box;
 		overflow: hidden;
-		padding: var(--space-14);
+		padding: var(--space-14) var(--space-20);
 		margin: 0 auto;
 		background-image: 
 			url(../assets/base/frame-left.png), 
@@ -98,6 +97,7 @@ const { background } = Astro.props;
 	.media-slot :global(video),
 	.media-slot :global(svg) {
 		width: 100%;
+		max-width: 860px;
 		height: auto;
 		object-fit: cover;
 	}

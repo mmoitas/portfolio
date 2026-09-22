@@ -1,5 +1,11 @@
 /* Design tokens synced from Figma "Portfolio for AI" (file cvjlqaajZej3PCJsBiNxcX). */
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 :root {
 	/* Color */
 	--text-color-primary: #151515;
@@ -44,17 +50,21 @@
 	--font-family-body: 'Special Gothic', sans-serif;
 
 	/* Type styles */
-	--display-1-font-size: 72px;
+	--display-1-font-size: 80px;
 	--display-1-line-height: 1;
 	--display-1-font-weight: 400;
 
-	--display-2-font-size: 48px;
+	--display-2-font-size: 56px;
 	--display-2-line-height: 1.2;
 	--display-2-font-weight: 400;
 
-	--display-3-font-size: 32px;
+	--display-3-font-size: 40px;
 	--display-3-line-height: 1.2;
 	--display-3-font-weight: 400;
+
+	--display-4-font-size: 28px;
+	--display-4-line-height: 1.2;
+	--display-4-font-weight: 700;
 
 	--body-large-font-size: 20px;
 	--body-large-line-height: 1.4;
@@ -86,6 +96,8 @@
 	--space-12: 48px;
 	--space-14: 56px;
 	--space-16: 64px;
+	--space-18: 72px;
+	--space-20: 80px;
 
 	/* Stroke */
 	--stroke-size-default: 1px;
@@ -121,6 +133,15 @@
 	color: var(--text-color-primary);
 }
 
+.text-display-4 {
+	margin: 0;
+	font-family: var(--font-family-body);
+	font-size: var(--display-4-font-size);
+	line-height: var(--display-4-line-height);
+	font-weight: var(--display-4-font-weight);
+	color: var(--text-color-primary);
+}
+
 .text-body-large {
 	margin: 0;
 	font-family: var(--font-family-body);
@@ -129,6 +150,7 @@
 	font-weight: var(--body-large-font-weight);
 	color: var(--text-color-primary);
 	font-variation-settings: 'wdth' 100;
+	text-wrap: balance;
 }
 
 .text-pretitle {
@@ -142,6 +164,10 @@
 	font-variation-settings: 'wdth' 100;
 }
 
+.text-slot h3 {
+	margin: var(--space-4) 0 0 0;
+}
+
 .text-body-default {
 	margin: 0;
 	font-family: var(--font-family-body);
@@ -150,6 +176,7 @@
 	font-weight: var(--body-default-font-weight);
 	color: var(--text-color-primary);
 	font-variation-settings: 'wdth' 100;
+	text-wrap: pretty;
 }
 
 .text-body-small {
@@ -160,6 +187,21 @@
 	font-weight: var(--body-small-font-weight);
 	color: var(--text-color-primary);
 	font-variation-settings: 'wdth' 100;
+	text-wrap: pretty;
+}
+
+.scroll-frame {
+	max-height: 600px;
+	overflow-y: auto;
+	width: 100%;
+	scrollbar-color: var(--neutral-100) var(--surface-color-0); 
+  	scrollbar-width: thin; 
+}
+
+.scroll-frame img {
+	display: block;
+	width: 100%;
+	height: auto;
 }
 
 .text-nav-title {

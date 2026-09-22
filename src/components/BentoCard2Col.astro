@@ -17,8 +17,7 @@ const { dividers = false } = Astro.props;
 		align-items: flex-start;
 		gap: var(--space-4);
 		width: 100%;
-		box-sizing: border-box;
-		padding: var(--space-14) var(--space-4);
+		padding: var(--space-14) var(--space-8);
 	}
 
 	.bento-card-2col[data-dividers] {
@@ -39,6 +38,11 @@ const { dividers = false } = Astro.props;
 
 	.media-slot {
 		flex: 60 0 0;
+	}
+	
+	.media-slot img {
+		width: 100%;
+		height: auto;
 	}
 
 	.text-slot :global(.text-body-default) {

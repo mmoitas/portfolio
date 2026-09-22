@@ -1,0 +1,155 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard2Col from '../components/BentoCard2Col.astro';
+import BentoCard2Row from '../components/BentoCard2Row.astro';
+import HeaderProject from '../components/HeaderProject.astro';
+
+import imgHeroDashVision from '../assets/dashboard-vision/hero-dash-vision1.png';
+import imgOldDash from '../assets/dashboard-vision/old-dashboard.png';
+import imgDashInterview from '../assets/dashboard-vision/dash-interview.png';
+import imgDashFull from '../assets/dashboard-vision/dashboard-full.png';
+import imgAccountsWidget from '../assets/dashboard-vision/accounts-advisors.png';
+import imgExpensesWidget from '../assets/dashboard-vision/expenses-widget.png';
+import imgAiWidget from '../assets/dashboard-vision/ai-bar.png';
+import imgCustomize from '../assets/dashboard-vision/customize.png';
+import imgShortTerm from '../assets/dashboard-vision/short-term.png';
+---
+
+<Layout>
+	<HeaderProject background="3">
+		<Fragment slot="title">Dashboard Vision</Fragment>
+		<Fragment slot="body">
+			A research-driven vision for Wave's dashboard, built to turn a simple reporting tool into a proactive financial partner for micro-business owners. I led the vision framing and designed the prototype, working with Giulio Ferrato, Senior Service Designer, who led discovery.
+		</Fragment>
+		<Fragment slot="media">
+			<img src={imgHeroDashVision.src} alt="Dashboard Vision hero image" />
+		</Fragment>
+	</HeaderProject>
+
+	<BentoGrid dividers>
+		<BentoCard2Col>
+			<Fragment slot="text">
+				<h2 class="text-display-3">The problem</h2>
+				<p class="text-body-default">
+					Wave's dashboard is simple and easy to understand, but static. It shows account balances and historical cash flow without telling owners what to do about them. Competitors like QuickBooks and Xero had moved past passive reporting toward personalization, integrations, and actionable suggestions.
+				</p>
+				<p class="text-body-default">
+					The dashboard is an entryway and a great opportunity to give users valuable insights and make them feel in control of their business finances. We need to enable that for them.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={imgOldDash.src} width="100%" alt="A screenshot showing Wave's old dashboard" />
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+
+	<BentoGrid dividers>
+		<BentoCard2Col>
+			<Fragment slot="text">
+				<h2 class="text-display-3">The research</h2>
+				<p class="text-body-default">
+					Our Service Designer led a mixed-method research effort that was made up of 5 internal interviews with Wave accounting specialists, 21 business owner interviews, and a survey with over 1,000 responses, alongside a competitive audit and a review of the current dashboard experience.
+				</p>
+				<h3 class="text-display-4">What we learned</h3>
+				<p class="text-body-default">
+					Owners return to three questions constantly: are we making money, are we growing, and are we running efficiently. Today they answer those questions manually, piecing together information from accounting software, payment processors, and spreadsheets, with no single reliable source of truth. The research also showed this isn't a one-time task. It's a recurring cycle: daily cash checks, monthly reconciliation, and annual tax prep, each one repeating the same manual grind.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={imgDashInterview.src} width="100%" alt="A screenshot showing a person being interviewed by a designer" />
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+	
+	<BentoGrid dividers>
+		<BentoCard2Col>
+			<Fragment slot="text">
+				<h2 class="text-display-3">The solution</h2>
+				<p class="text-body-default">
+					We framed the vision around three needs the research surfaced: a single source of truth, predictive and actionable insights, a customizable and effortless experience. 
+				</p>
+				<p class="text-body-default">
+					Below are the parts of the solution that best show the thinking.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<div class="scroll-frame">
+					<img src={imgDashFull.src} alt="A screenshot showing the new dashboard" />
+				</div>
+				<p class="text-body-small">Scroll down the new dashboard to see more.</p>
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+
+	<BentoGrid dividers>
+		<BentoCard2Row dividers>
+			<Fragment slot="text">
+				<h2 class="text-display-4">Consolidating scattered data into one view</h2>
+				<p class="text-body-default">
+					Owners were manually cross-referencing bank balances, invoices, and payroll across disconnected tools. We designed an accounts balance widget that consolidates every connected account in one place, and scoped a Wave Advisors widget that surfaces what an advisor has already done for the business. The goal was for Wave itself to become the reliable record, not one more tab to check.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={imgAccountsWidget.src} alt="Screenshot of the accounts balance and Wave advisors widgets" />
+			</Fragment>
+		</BentoCard2Row>
+		<BentoCard2Col>
+			<Fragment slot="text">
+				<h2 class="text-display-4">Insight tied to an action</h2>
+				<p class="text-body-default">
+					Every widget in the design carries a specific insight and a next action, not a static number. Expenses breakdown flags uncategorized transactions with a warning. Invoices shows potential income from unpaid work with a direct link to fix it. This was a deliberate response to the research finding that the current dashboard reports data without telling owners what to do with it.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={imgExpensesWidget.src} alt="Screenshot of the expenses pie graph widget" />
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+
+	<BentoGrid dividers>
+		<BentoCard2Col dividers>
+			<Fragment slot="text">
+				<h2 class="text-display-4">AI as an enabler</h2>
+				<p class="text-body-default">
+					AI powers the actionable insights on every widget, turning raw data into guidance, like flagging transactions to categorize or sending invoice payment reminders so business owners can make payroll. There's also an entry point to an AI agent, where users can search, ask for deeper insights, or get help.
+				</p>
+				<p class="text-body-default">
+					This exploration didn't go deep into AI capabilities. We kept it to smaller, contained insights to show the influence AI could have on the dashboard, not to design the full feature set. Even at that scale, it was enough to prompt product teams to start exploring AI features on their own.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={imgAiWidget.src} alt="Screenshot of the AI bar widget" />
+				<p class="text-body-small">
+					AI agent interactions happen in a right side bar that opens over the dashboard. On the left you have the interactions option on a Starter (free) user view, and on the right an example of a prompt response for a Pro (paid) user.
+				</p>
+			</Fragment>
+		</BentoCard2Col>
+		<BentoCard2Row>
+			<Fragment slot="text">
+				<h2 class="text-display-4">Consolidating scattered data into one view</h2>
+				<p class="text-body-default">
+					Owners were manually cross-referencing bank balances, invoices, and payroll across disconnected tools. We designed an accounts balance widget that consolidates every connected account in one place, and scoped a Wave Advisors widget that surfaces what an advisor has already done for the business. The goal was for Wave itself to become the reliable record, not one more tab to check.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={imgCustomize.src} alt="Screenshot of the accounts balance and Wave advisors widgets" />
+			</Fragment>
+		</BentoCard2Row>
+	</BentoGrid>
+
+	<BentoGrid dividers>
+		<BentoCard2Col>
+			<Fragment slot="text">
+				<h2 class="text-display-3">Impact</h2>
+				<p class="text-body-default">
+					The first phase of this vision shipped as a opt-in beta. In this first step we simply apply the vision's widget design and grid, with that we took the first step setting the foundations to get to the vision ideal state. We also added one more promotional banner to drive people to upgrade to Pro. With this extra banner we increased visibility to Wave’s paid plan and <strong>converted customers to Pro 3x more than the previous experience.</strong> The vision work also went on to shape Wave's product roadmap directly, including early direction for AI initiatives.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={imgShortTerm.src} alt="Screenshot of the short term implementation of the new dashboard." />
+				<p class="text-body-small">This is the short term implementation of the dashboard.</p>
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+</Layout>

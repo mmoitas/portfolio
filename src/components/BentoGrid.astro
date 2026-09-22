@@ -31,15 +31,26 @@ const { dividers = false } = Astro.props;
 		width: 100%;
 	}
 
-	/* 1 or 2 Bento Cards can be slotted in; each takes an equal share of the row. */
+	/* 1 or 2 Bento Cards can be slotted in. A single card fills the row;
+	   two cards split it into even, balanced 50% columns. */
 	.bento-grid-row > :global(*) {
 		flex: 1 0 0;
 		min-width: 0;
 	}
 
+	.bento-grid-row > :global(*):not(:only-child) {
+		flex: 0 0 50%;
+		max-width: 50%;
+	}
+
 	@media (max-width: 768px) {
 		.bento-grid-row {
 			flex-direction: column;
+		}
+
+		.bento-grid-row > :global(*):not(:only-child) {
+			flex: 1 0 auto;
+			max-width: 100%;
 		}
 	}
 </style>
