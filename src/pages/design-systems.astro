@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard2Col from '../components/BentoCard2Col.astro';
+import HeaderProject from '../components/HeaderProject.astro';
+
+import imgHero from '../assets/design-systems/ds-hero.svg';
+import img1 from '../assets/design-systems/ds-overview.png';
+import img2 from '../assets/design-systems/ds-tokens.png';
+import img3 from '../assets/design-systems/ds-ally.png';
+import img4 from '../assets/design-systems/ds-component-structure.png';
+import img5 from '../assets/design-systems/ds-icons.png';
+---
+
+<Layout>
+	<HeaderProject background="2">
+		<Fragment slot="title">Design Systems</Fragment>
+		<Fragment slot="body">
+			Here you’ll see a set of initiatives I've led at Wave, first as a dedicated design systems designer, then as a Staff designer supporting multiple product teams while still owning design systems strategy. Each initiative covers a real problem, the solution we built, and the impact it had on the product and the teams building on it. This is a summarized view rather than a full breakdown of each project.<br /><br />
+			The goal is to give a quick sense of how I approach systems problems across a range of initiatives.
+		</Fragment>
+		<Fragment slot="media">
+			<img src={imgHero.src} alt="Illustration of Lego bricks to represent Design Systems modular nature" />
+		</Fragment>
+	</HeaderProject>
+
+	<BentoGrid dividers>
+		<BentoCard2Col>
+			<Fragment slot="text">
+				<h2 class="text-display-3">The problem</h2>
+				<p class="text-body-default">
+					Wave has had a design system in place since around 2015, which means it's been part of how design and engineering work together for a long time. That partnership is close enough that code is the source of truth. Designers and engineers both build the UI from the same reference.
+				</p>	
+				<p class="text-body-default">
+					I've led design systems at Wave since 2019. For the first two years, I worked as a dedicated design systems designer. After that, I moved into a Staff designer role supporting multiple product teams, and design systems shifted from a centralized team to a shared ownership model. I still lead strategy, but the system is now maintained by all designers.
+				</p>	
+				<p class="text-body-default">	
+					Even though the system is mature, Wave has incurred in growing pains over time, and some areas of the app carry custom patterns that don't match the rest of the system. Also, because Wave adopted design systems early, we carry technical debt that makes newer efforts, like AI-assisted design and development of new components harder.
+				</p>
+				<p class="text-body-default">
+					Below are some of the design systems initiatives I've led, the problems they solved, and the impact they had.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img1.src} width="80%" alt="A chart of the design system's structure at Wave" />
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+	
+	<BentoGrid dividers>
+		<BentoCard2Col>
+			<Fragment slot="text">
+				<h2 class="text-display-3">Design tokens</h2>
+				
+				<h3 class="text-display-4">Problem</h3>
+				<p class="text-body-default">
+					Our CSS variables only covered color. Everything else was relying heavily in Sass functions or hardcoded, which meant we had no real flexibility to support new UI needs like dark mode or theming. This was technical debt from being an early adopter of design systems, and it was starting to slow us down and block quality of life improvements.
+				</p>
+
+				<h3 class="text-display-4">Solution</h3>
+				<p class="text-body-default">
+					We implemented a design tokens library that will become the single source of truth for design properties across both web and native mobile. We have already adopted color tokens across both touch points, but we still need to address some inconsistencies to fully adopt all tokens on mobile.
+				</p>	
+				
+				<h3 class="text-display-4">Impact</h3>
+				<p class="text-body-default">	
+					Now we have the technical foundation in place to make web and mobile consistent by default, to build dark mode and theming when the product needs them, and a path towards a global component library.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img2.src} width="90%" alt="A screenshot showing a list of color tokens" />
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+	
+	<BentoGrid dividers>
+		<BentoCard2Col>
+			<Fragment slot="text">
+				<h2 class="text-display-3">Accessibility remediation</h2>
+				
+				<h3 class="text-display-4">Problem</h3>
+				<p class="text-body-default">
+					Making Wave usable by everybody is the right thing to do and also a compliance requirement. Our React components hadn't been audited for accessibility, so the risk of building features that are not accessible lived across every product team from the design systems foundation.
+				</p>
+
+				<h3 class="text-display-4">Solution</h3>
+				<p class="text-body-default">
+					We audited every React component in the library and remediated all instances to be fully WCAG 2.1 compliant.
+				</p>	
+				
+				<h3 class="text-display-4">Impact</h3>
+				<p class="text-body-default">	
+					Compliance is now built into the system itself, not something each product team has to solve on their own. Every team building on the component library inherits accessible components by default. But there’s still a lot of technical debt on how the components were implemented that needs to be addressed.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img3.src} width="90%" alt="A screenshot showing Wave's old dashboard" />
+				<p class="text-body-small">Here I used an example of a form field annotation for accessibility to illustrate the work done.</p>
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+	
+	<BentoGrid dividers>
+		<BentoCard2Col>
+			<Fragment slot="text">
+				<h2 class="text-display-3">Illustrations component</h2>
+				
+				<h3 class="text-display-4">Problem</h3>
+				<p class="text-body-default">
+					Wave uses spot illustrations throughout the app to support brand tone and communicate with users in a more effective way, but we never had a React     component to manage them. Illustrations were hardcoded, so every update meant auditing the entire app to find every instance and update it manually. This also left us with duplicate illustration files scattered across the codebase.
+				</p>
+
+				<h3 class="text-display-4">Solution</h3>
+				<p class="text-body-default">
+					In 2021, I led a project with the brand team to redesign the entire illustration library from scratch, more than 100 illustrations. We created an illustration bucket on AWS, a Node package, and a React component to support it.
+				</p>	
+				
+				<h3 class="text-display-4">Impact</h3>
+				<p class="text-body-default">	
+					Illustration updates are now centralized. The design team can update an asset in a single repository and have it apply everywhere, instead of running an app-wide audit. This reclaimed designer and developer time and resolved a long-standing source of technical debt.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img4.src} width="90%" alt="A chart describing the illustration component structure" />
+				<p class="text-body-small">Here I used an example of a form field annotation for accessibility to illustrate the work done.</p>
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+	
+	<BentoGrid>
+		<BentoCard2Col>
+			<Fragment slot="text">
+				<h2 class="text-display-3">Icon library redesign</h2>
+				
+				<h3 class="text-display-4">Problem</h3>
+				<p class="text-body-default">
+					We had two separate icon libraries, one for web and one for mobile native. The main functional difference was size, but maintaining two libraries with the same purpose created inconsistency between icons and doubled our maintenance and update effort.
+				</p>
+
+				<h3 class="text-display-4">Solution</h3>
+				<p class="text-body-default">
+					We redesigned the entire icon library from scratch, consolidating it into one library with four sizes and two style options, enough range to meet both platforms' requirements from a single source.
+				</p>	
+				
+				<h3 class="text-display-4">Impact</h3>
+				<p class="text-body-default">	
+					One library now serves web, mobile, and marketing touchpoints. This removed the inconsistency between platforms and cut design debt and the ongoing maintenance load in half.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img5.src} width="90%" alt="An image showing icons and the guidelines used to draw them" />
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+
+</Layout>

@@ -63,7 +63,7 @@ import imgShortTerm from '../assets/dashboard-vision/short-term.png';
 	</BentoGrid>
 	
 	<BentoGrid dividers>
-		<BentoCard2Col>
+		<BentoCard2Col zoomable>
 			<Fragment slot="text">
 				<h2 class="text-display-3">The solution</h2>
 				<p class="text-body-default">
@@ -83,7 +83,7 @@ import imgShortTerm from '../assets/dashboard-vision/short-term.png';
 	</BentoGrid>
 
 	<BentoGrid dividers>
-		<BentoCard2Row dividers>
+		<BentoCard2Row dividers zoomable>
 			<Fragment slot="text">
 				<h2 class="text-display-4">Consolidating scattered data into one view</h2>
 				<p class="text-body-default">
@@ -91,10 +91,10 @@ import imgShortTerm from '../assets/dashboard-vision/short-term.png';
 				</p>
 			</Fragment>
 			<Fragment slot="media">
-				<img src={imgAccountsWidget.src} alt="Screenshot of the accounts balance and Wave advisors widgets" />
+				<img src={imgAccountsWidget.src} width="100%" alt="Screenshot of the accounts balance and Wave advisors widgets" />
 			</Fragment>
 		</BentoCard2Row>
-		<BentoCard2Col>
+		<BentoCard2Col zoomable>
 			<Fragment slot="text">
 				<h2 class="text-display-4">Insight tied to an action</h2>
 				<p class="text-body-default">
@@ -102,13 +102,13 @@ import imgShortTerm from '../assets/dashboard-vision/short-term.png';
 				</p>
 			</Fragment>
 			<Fragment slot="media">
-				<img src={imgExpensesWidget.src} alt="Screenshot of the expenses pie graph widget" />
+				<img src={imgExpensesWidget.src} width="100%" alt="Screenshot of the expenses pie graph widget" />
 			</Fragment>
 		</BentoCard2Col>
 	</BentoGrid>
 
 	<BentoGrid dividers>
-		<BentoCard2Col dividers>
+		<BentoCard2Col dividers zoomable>
 			<Fragment slot="text">
 				<h2 class="text-display-4">AI as an enabler</h2>
 				<p class="text-body-default">
@@ -119,7 +119,7 @@ import imgShortTerm from '../assets/dashboard-vision/short-term.png';
 				</p>
 			</Fragment>
 			<Fragment slot="media">
-				<img src={imgAiWidget.src} alt="Screenshot of the AI bar widget" />
+				<img src={imgAiWidget.src} width="100%" alt="Screenshot of the AI bar widget" />
 				<p class="text-body-small">
 					AI agent interactions happen in a right side bar that opens over the dashboard. On the left you have the interactions option on a Starter (free) user view, and on the right an example of a prompt response for a Pro (paid) user.
 				</p>
@@ -133,12 +133,12 @@ import imgShortTerm from '../assets/dashboard-vision/short-term.png';
 				</p>
 			</Fragment>
 			<Fragment slot="media">
-				<img src={imgCustomize.src} alt="Screenshot of the accounts balance and Wave advisors widgets" />
+				<img src={imgCustomize.src} width="100%" alt="Screenshot of the accounts balance and Wave advisors widgets" />
 			</Fragment>
 		</BentoCard2Row>
 	</BentoGrid>
 
-	<BentoGrid dividers>
+	<BentoGrid>
 		<BentoCard2Col>
 			<Fragment slot="text">
 				<h2 class="text-display-3">Impact</h2>
@@ -147,7 +147,7 @@ import imgShortTerm from '../assets/dashboard-vision/short-term.png';
 				</p>
 			</Fragment>
 			<Fragment slot="media">
-				<img src={imgShortTerm.src} alt="Screenshot of the short term implementation of the new dashboard." />
+				<img src={imgShortTerm.src} width="100%" alt="Screenshot of the short term implementation of the new dashboard." />
 				<p class="text-body-small">This is the short term implementation of the dashboard.</p>
 			</Fragment>
 		</BentoCard2Col>

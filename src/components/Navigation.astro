@@ -15,8 +15,10 @@ const { class: className } = Astro.props;
 			aria-expanded="false"
 			aria-label="Open menu"
 		>
-			<img src="/images/icons/nav-small.svg" alt="" class="nav-icon" width="24" height="24" />
-			<img src="/images/icons/head-medium.svg" alt="" class="site-icon" width="48" height="48" />
+			<img src="/images/icons/head-medium.svg" alt="" class="site-icon" width="40" height="40" />
+			<span class="label-spin" aria-hidden="true">
+				<img src="/images/nav-label.svg" alt="" class="menu-label" />
+			</span>
 		</button>
 		<!-- <a href="/" class="site-name">
 			<img src="/images/icons/head-medium.svg" alt="" class="site-icon" width="48" height="48" />
@@ -30,7 +32,7 @@ const { class: className } = Astro.props;
 		display: flex;
 		align-items: center;
 		width: 100%;
-		padding: var(--space-4) var(--space-10);
+		padding: var(--space-4) var(--space-14);
 		background-color: var(--surface-color-0);
 	}
 
@@ -41,6 +43,7 @@ const { class: className } = Astro.props;
 	}
 
 	.nav-button {
+		position: relative;
 		display: flex;
 		align-items: center;
 		padding: 0;
@@ -51,8 +54,43 @@ const { class: className } = Astro.props;
 		background-color: var(--neutral-2);
 	}
 
-	.nav-icon {
-		display: block;
+	/* Figma "labelSpin": a frame the size of the head, so it rotates
+	   around the head's center, carrying the curved label with it. */
+	.label-spin {
+		position: absolute;
+		inset: 0;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.menu-label {
+		position: absolute;
+		left: 30px;
+		top: -9px;
+		width: 23.291px;
+		height: 58.432px;
+	}
+
+	.nav-button:hover .label-spin,
+	.nav-button:focus-visible .label-spin {
+		opacity: 1;
+		animation: label-spin 2s linear infinite;
+	}
+
+	@keyframes label-spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.nav-button:hover .label-spin,
+		.nav-button:focus-visible .label-spin {
+			animation: none;
+		}
 	}
 
 	.site-name {

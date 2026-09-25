@@ -1,14 +1,16 @@
 ---
 interface Props {
 	dividers?: boolean;
+	/** Images in the media slot open larger in a modal when clicked. */
+	zoomable?: boolean;
 }
 
-const { dividers = false } = Astro.props;
+const { dividers = false, zoomable = false } = Astro.props;
 ---
 
 <div class="bento-card-2col" data-dividers={dividers ? '' : undefined}>
 	<div class="text-slot"><slot name="text" /></div>
-	<div class="media-slot"><slot name="media" /></div>
+	<div class="media-slot" data-zoomable={zoomable ? '' : undefined}><slot name="media" /></div>
 </div>
 
 <style>
@@ -38,6 +40,8 @@ const { dividers = false } = Astro.props;
 
 	.media-slot {
 		flex: 60 0 0;
+		align-items: center;
+		align-self: center;
 	}
 	
 	.media-slot img {
@@ -47,6 +51,7 @@ const { dividers = false } = Astro.props;
 
 	.text-slot :global(.text-body-default) {
 		max-width: 640px;
+		align-self: flex-start;
 	}
 
 	/* Below 768px the two columns stack: text above media, both full-width.

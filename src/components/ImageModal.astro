@@ -1,0 +1,175 @@
+---
+// One shared modal for the whole site, rendered once in Layout.astro.
+// Any <img> inside an element with [data-zoomable] (e.g. a Bento card's
+// media slot with the `zoomable` prop) opens here at a larger size.
+---
+
+<dialog class="image-modal" aria-label="Enlarged image">
+	<div class="image-modal-panel">
+		<div class="image-modal-header">
+			<button type="button" class="image-modal-close" aria-label="Close">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+				</svg>
+			</button>
+		</div>
+		<img class="image-modal-img" src="" alt="" />
+	</div>
+</dialog>
+
+<style>
+	.image-modal {
+		width: fit-content;
+		max-width: calc(100vw - 2 * var(--space-8));
+		max-height: calc(100dvh - 2 * var(--space-8));
+		padding: 0;
+		border: var(--stroke-size-default) solid var(--stroke-color-primary);
+		background-color: var(--surface-color-0);
+		overflow: auto;
+		/* Reaching the end of a tall image doesn't carry on scrolling the page. */
+		overscroll-behavior: contain;
+		/* Same scrollbar as .scroll-frame in tokens.css. */
+		scrollbar-color: var(--neutral-100) var(--surface-color-0);
+		scrollbar-width: thin;
+	}
+
+	/* Hardcoded: older browsers don't pass :root custom properties to ::backdrop.
+	   #151515 (--neutral-900) at 80%. */
+	.image-modal::backdrop {
+		background-color: rgb(21 21 21 / 0.8);
+	}
+
+	/* Dissolve: fade in on open; the script adds .is-closing and waits for
+	   the fade-out to finish before actually closing the dialog. */
+	.image-modal[open],
+	.image-modal[open]::backdrop {
+		animation: image-modal-fade-in 300ms ease;
+	}
+
+	.image-modal.is-closing,
+	.image-modal.is-closing::backdrop {
+		animation: image-modal-fade-out 300ms ease forwards;
+	}
+
+	@keyframes image-modal-fade-in {
+		from {
+			opacity: 0;
+		}
+	}
+
+	@keyframes image-modal-fade-out {
+		to {
+			opacity: 0;
+		}
+	}
+
+	.image-modal-panel {
+		display: flex;
+		flex-direction: column;
+		padding: 0 var(--space-4) var(--space-4);
+	}
+
+	/* Stays visible while scrolling a tall image. */
+	.image-modal-header {
+		position: sticky;
+		top: 0;
+		display: flex;
+		justify-content: flex-end;
+		padding: var(--space-2) 0;
+		background-color: var(--surface-color-0);
+	}
+
+	.image-modal-close {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		padding: 0;
+		border: none;
+		background: none;
+		color: var(--text-color-primary);
+		cursor: pointer;
+	}
+
+	.image-modal-img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	/* Created by the script below around each zoomable image. */
+	:global(.zoom-trigger) {
+		display: block;
+		width: 100%;
+		padding: 0;
+		border: none;
+		background: none;
+		cursor: zoom-in;
+	}
+
+	:global(.zoom-trigger img) {
+		display: block;
+	}
+
+	@media (max-width: 768px) {
+		.image-modal {
+			max-width: calc(100vw - 2 * var(--space-4));
+			max-height: calc(100dvh - 2 * var(--space-4));
+		}
+	}
+</style>
+
+<script>
+	const dialog = document.querySelector<HTMLDialogElement>('.image-modal');
+	const modalImg = dialog?.querySelector<HTMLImageElement>('.image-modal-img');
+	const closeButton = dialog?.querySelector<HTMLButtonElement>('.image-modal-close');
+
+	if (dialog && modalImg && closeButton) {
+		document.querySelectorAll<HTMLImageElement>('[data-zoomable] img').forEach((img) => {
+			const trigger = document.createElement('button');
+			trigger.type = 'button';
+			trigger.className = 'zoom-trigger';
+			trigger.setAttribute('aria-label', img.alt ? `Enlarge image: ${img.alt}` : 'Enlarge image');
+			img.replaceWith(trigger);
+			trigger.append(img);
+
+			trigger.addEventListener('click', () => {
+				modalImg.src = img.currentSrc || img.src;
+				modalImg.alt = img.alt;
+				dialog.classList.remove('is-closing');
+				dialog.showModal();
+				dialog.scrollTop = 0;
+			});
+		});
+
+		// Play the fade-out, then close for real.
+		const closeModal = () => {
+			if (!dialog.open || dialog.classList.contains('is-closing')) return;
+			dialog.classList.add('is-closing');
+			const finish = () => {
+				clearTimeout(fallback);
+				// Also detach when the fallback wins, so the next open's fade-in can't close it.
+				dialog.removeEventListener('animationend', finish);
+				dialog.classList.remove('is-closing');
+				dialog.close();
+			};
+			// Fallback in case the animation never runs (e.g. animations disabled in the browser).
+			const fallback = setTimeout(finish, 400);
+			dialog.addEventListener('animationend', finish);
+		};
+
+		closeButton.addEventListener('click', closeModal);
+
+		// Esc would close the dialog instantly; route it through the fade instead.
+		dialog.addEventListener('cancel', (event) => {
+			event.preventDefault();
+			closeModal();
+		});
+
+		// The panel fills the dialog, so a click landing on the dialog itself is on the overlay.
+		dialog.addEventListener('click', (event) => {
+			if (event.target === dialog) closeModal();
+		});
+	}
+</script>

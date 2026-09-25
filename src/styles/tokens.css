@@ -10,7 +10,9 @@
 	/* Color */
 	--text-color-primary: #151515;
 	--stroke-color-primary: #151515;
+	--text-color-tertiary: #ffffff;
 	--surface-color-0: #f0f0ef;
+	--surface-color-9: #151515;
 
 	/* Brand (Header background variants) */
 	--brand-0: #f0f0ef;
@@ -181,6 +183,7 @@
 
 .text-body-small {
 	margin: 0;
+	padding: 0 var(--space-4);
 	font-family: var(--font-family-body);
 	font-size: var(--body-small-font-size);
 	line-height: var(--body-small-line-height);
@@ -188,6 +191,7 @@
 	color: var(--text-color-primary);
 	font-variation-settings: 'wdth' 100;
 	text-wrap: pretty;
+	align-self: flex-start;
 }
 
 .scroll-frame {
