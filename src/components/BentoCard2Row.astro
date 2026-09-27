@@ -3,12 +3,19 @@ interface Props {
 	dividers?: boolean;
 	/** Images in the media slot open larger in a modal when clicked. */
 	zoomable?: boolean;
+	/** Share of the BentoGrid row, as a percentage (e.g. 70). Cards without it split the remaining width. */
+	width?: number;
 }
 
-const { dividers = false, zoomable = false } = Astro.props;
+const { dividers = false, zoomable = false, width } = Astro.props;
 ---
 
-<div class="bento-card-2row" data-dividers={dividers ? '' : undefined}>
+<div
+	class="bento-card-2row"
+	data-dividers={dividers ? '' : undefined}
+	data-width={width !== undefined ? '' : undefined}
+	style={width !== undefined ? `--bento-card-width: ${width}%` : undefined}
+>
 	<div class="text-slot"><slot name="text" /></div>
 	<div class="media-slot" data-zoomable={zoomable ? '' : undefined}><slot name="media" /></div>
 </div>
@@ -17,7 +24,7 @@ const { dividers = false, zoomable = false } = Astro.props;
 	.bento-card-2row {
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-4);
+		gap: var(--space-8);
 		width: 100%;
 		padding: var(--space-14) var(--space-8);
 	}

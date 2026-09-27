@@ -63,6 +63,11 @@ const { class: className } = Astro.props;
 		list-style: none;
 	}
 
+	/* Spacing comes from the flex gap above, not the global li margin. */
+	.contact li {
+		margin: 0;
+	}
+
 	.contact-link {
 		display: flex;
 		align-items: center;

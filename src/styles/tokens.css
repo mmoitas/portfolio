@@ -6,6 +6,11 @@
 	box-sizing: border-box;
 }
 
+/* Space between list items (none after the last, so lists don't add a trailing gap). */
+li:not(:last-child) {
+	margin-bottom: var(--space-4);
+}
+
 :root {
 	/* Color */
 	--text-color-primary: #151515;
@@ -184,6 +189,7 @@
 .text-body-small {
 	margin: 0;
 	padding: 0 var(--space-4);
+	max-width: 640px;
 	font-family: var(--font-family-body);
 	font-size: var(--body-small-font-size);
 	line-height: var(--body-small-line-height);

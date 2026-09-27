@@ -1,0 +1,164 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BentoGrid from '../components/BentoGrid.astro';
+import BentoCard2Col from '../components/BentoCard2Col.astro';
+import BentoCard2Row from '../components/BentoCard2Row.astro';
+import HeaderProject from '../components/HeaderProject.astro';
+
+import imgHero from '../assets/receipts/receipt-hero.png';
+import img1 from '../assets/receipts/receipt-discovery.png';
+import img2 from '../assets/receipts/receipt-old-flow.png';
+import img3 from '../assets/receipts/receipt-new-flow.png';
+import img4 from '../assets/receipts/receipt-new-app.png';
+import img5 from '../assets/receipts/receipt-pricing.png';
+import img6 from '../assets/receipts/receipt-first-time.png';
+import img7 from '../assets/receipts/receipt-list.png';
+import img8 from '../assets/receipts/receipt-result.svg';
+---
+
+<Layout>
+	<HeaderProject background="4">
+		<Fragment slot="title">Receipts scan</Fragment>
+		<Fragment slot="body">
+			Back in 2019, our standalone receipts scan app was sunsetted as its costs were too high for Wave to keep it viable as a free app. Now, with the new all-in-one Wave mobile app, the most requested feature by our users is receipts scan, which prompted us to bring it back, but as a paid feature.
+		</Fragment>
+		<Fragment slot="media">
+			<img src={imgHero.src} alt="Illustration of Lego bricks to represent Design Systems modular nature" />
+		</Fragment>
+	</HeaderProject>
+
+	<BentoGrid dividers>
+		<BentoCard2Col>
+			<Fragment slot="text">
+				<h2 class="text-display-3">Discovery</h2>
+				<p class="text-body-default">
+					Our first decision was to not use any part of the previous app and instead rebuilt it from the ground up, incorporating a new third-party partner. This project is also the first time Wave would implement a SaaS model outside of Payroll. 
+				</p>	
+				<p class="text-body-default">
+					We conducted research on the plans and price points, as well as the new user flow that automates a key step in the receipt scan process.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img1.src} width="100%" alt="A chart of the design system's structure at Wave" />
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+	
+	<BentoGrid dividers>
+		<BentoCard2Row>
+			<Fragment slot="text">
+				<h2 class="text-display-4">Old flow</h2>
+				<p class="text-body-default">
+					The old receipt scan app followed the user flow steps that are common in the main accounting apps on the market, such as QuickBooks and Zoho. On those flows the user have to approve scanned receipts to post then as transactions into accounting.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img2.src} width="90%" alt="A wireframe showing the old receipt scan flow." />
+				<p class="text-body-small">
+					Posted receipts couldn’t be edited on the old app. Users needed to log into waveapps.com on the browser, into accounting, and find the transactions with receipts attached to edit the details. 
+				</p>
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+	
+	<BentoGrid dividers>
+		<BentoCard2Row>
+			<Fragment slot="text">
+				<h2 class="text-display-4">New flow</h2>
+				<p class="text-body-default">
+					The old receipt scan app followed the user flow steps that are common in the main accounting apps on the market, such as QuickBooks and Zoho. On those flows the user have to approve scanned receipts to post then as transactions into accounting.Our new receipt scan feature creates a transaction directly into accounting right after the scan process is finished. With that we speed up receipts intake and rely on our machine learning model to automatically categorize the expense transaction and merge duplicates.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img3.src} width="90%" alt="A wireframe showing the new receipt scan flow." />
+				<p class="text-body-small">
+					Posted receipts couldn’t be edited on the old app. Users needed to log into waveapps.com on the browser, into accounting, and find the transactions with receipts attached to edit the details. 
+				</p>
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+	
+	<BentoGrid dividers>
+		<BentoCard2Row>
+			<Fragment slot="text">
+				<h2 class="text-display-3">New receipt scan</h2>
+				<p class="text-body-default">
+					Here’s what the new flow above looks like on the app. A new user would finish creating a new expense transaction in two or three taps.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img4.src} width="90%" alt="Screenshot of the new receipt scan flow UI." />
+				<p class="text-body-small">
+					Posted receipts couldn’t be edited on the old app. Users needed to log into waveapps.com on the browser, into accounting, and find the transactions with receipts attached to edit the details. 
+				</p>
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+
+	<BentoGrid dividers>
+		<BentoCard2Row dividers zoomable>
+			<Fragment slot="text">
+				<h2 class="text-display-4">Pricing page</h2>
+				<p class="text-body-default">
+					As the first paid accounting feature at Wave, we came up with an in-app landing page to promote and inform users about the new feature, and plans available. We run usability test sessions where we evaluated this page for comprehension of the offering, the pricing model, and how to buy it.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img5.src} width="100%" alt="Receipts subscription pricing page." />
+			</Fragment>
+		</BentoCard2Row>
+		<BentoCard2Col zoomable>
+			<Fragment slot="text">
+				<h2 class="text-display-4">First time user experience</h2>
+				<p class="text-body-default">
+					Taking into consideration that our flow is simplified, we wanted to reassure new users that we are taking care of things for them with automated transaction categorization and merging duplicate transactions.
+				</p>
+				<p class="text-body-default">
+					We have introduced a celebratory step when a user scans a receipt for the first time. This communication underwent several rounds of usability and content comprehension tests, and we settled on this as the final result.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img6.src} width="80%" alt="Screenshot of the first time user experience of successful receipt scan." />
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+	
+	<BentoGrid>
+		<BentoCard2Row dividers zoomable>
+			<Fragment slot="text">
+				<h2 class="text-display-4">Transaction list and details</h2>
+				<p class="text-body-default">
+					On the mobile app, for a number of technical reasons we still don’t have the full transactions list users have access to on the web. So, in the first phase of the project, we could only make a list of transactions created from receipts scanned on the app. But that was the first step to bringing transactions into the app as a follow-up.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<div class="scroll-frame">
+					<img src={img7.src} width="80%" alt="Screenshot of the receipts list and transaction details." />
+				</div>
+				<p class="text-body-small">
+					Scroll down or click in the image to see more of the transaction list.
+				</p>
+			</Fragment>
+		</BentoCard2Row>
+		<BentoCard2Row>
+			<Fragment slot="text">
+				<h2 class="text-display-3">Results</h2>
+				<p class="text-body-default">
+					We launched the new receipts scan feature in June 2023. We are measuring its success by conversion and usage metrics. We hit the subscribers volume we estimated for the first year in just three months, and after 6 months we are at 240% of the initial goal.
+				</p>
+				
+				<h3 class="text-display-4">Takeaways</h3>
+				<ul class="text-body-default">
+					<li>The new feature and simplified flow has been well received by subscribers.</li>
+					<li>The pricing page has a much higher conversion rate than initially expected, and we are currently working on optimization experiments to push it further.</li>
+					<li>As we expected users want to be able to manage all of their transactions on the app, so we are working to bring the full accounting feature to the mobile app.</li>
+					<li>By doing that we will also be able to allow users to attach receipts to existing transactions, a feature that we had to deprioritize for the initial launch.</li>
+				</ul>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img8.src} width="70%" alt="Graph showing subscription results above the expected." />
+			</Fragment>
+		</BentoCard2Row>
+	</BentoGrid>
+
+</Layout>
