@@ -6,22 +6,20 @@ import BentoCard2Row from '../components/BentoCard2Row.astro';
 import HeaderProject from '../components/HeaderProject.astro';
 
 import imgHero from '../assets/wave-illustrations/spot-hero.png';
-import img1 from '../assets/navigation/nav-discovery.png';
-import img2 from '../assets/navigation/nav-old-mobile.png';
-import img3 from '../assets/navigation/nav-old-settings.png';
-import img4 from '../assets/navigation/nav-old-sus.svg';
-import img5 from '../assets/navigation/nav-new.png';
-import img6 from '../assets/navigation/nav-top-bar.png';
-import img7 from '../assets/navigation/nav-closed.png';
-import img8 from '../assets/navigation/nav-responsive.png';
-import img9 from '../assets/navigation/nav-new-sus.svg';
+import img1 from '../assets/wave-illustrations/spot-comparison.png';
+import img2 from '../assets/wave-illustrations/spot-card-holder.png';
+import img3 from '../assets/wave-illustrations/spot-checkout.png';
+import img4 from '../assets/wave-illustrations/spot-people.png';
+import img5 from '../assets/wave-illustrations/spot-cheque-deposit.png';
+import img6 from '../assets/wave-illustrations/spot-structure.svg';
+import img7 from '../assets/wave-illustrations/spot-sheet.png';
 ---
 
 <Layout>
 	<HeaderProject background="8">
 		<Fragment slot="title">Illustrations redesign</Fragment>
 		<Fragment slot="body">
-			Our objective was to revisit Wave’s current navigation structure for desktop and mobile responsive screens to address usability concerns, improve the information architecture and design for scale (future proofing).
+			As part of a brand refresh project initiated by marketing, I was tasked to rethink our illustration style to make it simpler and more human.
 		</Fragment>
 		<Fragment slot="media">
 			<img src={imgHero.src} alt="Screenshot of the Wave mobile responsive navigation." />
@@ -31,41 +29,54 @@ import img9 from '../assets/navigation/nav-new-sus.svg';
 	<BentoGrid dividers>
 		<BentoCard2Col>
 			<Fragment slot="text">
-				<h2 class="text-display-3">Discovery</h2>
+				<h2 class="text-display-3">Project goals</h2>
 				<p class="text-body-default">
-					We ran card sorting exercises, gathered feedback from customer support tickets and ran baseline usability tests with the old navigation on desktop and mobile. 
-				</p>	
+					In this project our objective was to revamp our illustrations style to reflect our new brand guidelines, reduce cognitive load by moving away from the background blobs used on the old style, and double down on more whimsical elements to convey complex concepts in a simpler way.
+				</p>
 				<p class="text-body-default">
-					We added a System Usability Scale (SUS) survey at the end of each usability test as a quantitative metric to compare the old navigation vs the new navigation. 
+					After landing on a new style that ticked all requirements, with the help of another illustrator, we redesigned all 70 existing illustrations and added 30 more to our library.
+				</p>
+				<p class="text-body-default">
+					We also took that opportunity to improve the implementation on code with a new image repository and React component. 
+				</p>
+				<p class="text-body-default">
+					All new illustrations on our library follow the four principles listed below.
 				</p>
 			</Fragment>
 			<Fragment slot="media">
-				<img src={img1.src} width="100%" alt="A chart of the design system's structure at Wave" />
-				<p class="text-body-small">
-					Wave's old navigation composed by a single left-side menu bar.
-				</p>
-
+				<img src={img1.src} width="90%" alt="A chart of the design system's structure at Wave" />
 			</Fragment>
 		</BentoCard2Col>
 	</BentoGrid>
+	
+	<BentoGrid>
+		<BentoCard2Row>
+			<Fragment slot="text">
+				<h2 class="text-display-3">Principles</h2>
+			</Fragment>
+		</BentoCard2Row>
+	</BentoGrid>
 
 	<BentoGrid dividers>
-		<BentoCard2Row dividers zoomable>
+		<BentoCard2Col dividers>
 			<Fragment slot="text">
-				<h2 class="text-display-4">Menu toggle</h2>
+				<h2 class="text-display-4">Bring delight</h2>
 				<p class="text-body-default">
-					On mobile, users had a hard time closing the menu. The expectation was that the menu toggle would stay in the same place, but in this case, the toggle shifted to the right when the menu opened, and people had a hard time finding it.
+					Imperfect, looser strokes, and chalk texture humanizes our illustrations as it looks hand-drawn, artisanal.
+				</p>
+				<p class="text-body-default">
+					We also changed the style to convey ideas in a more whimsical way, looking to make a, sometimes, abrasive subject more delightful.
 				</p>
 			</Fragment>
 			<Fragment slot="media">
 				<img src={img2.src} width="100%" alt="Screenshot of the menu toggle issue on mobile." />
 			</Fragment>
-		</BentoCard2Row>
-		<BentoCard2Col width={70} zoomable>
+		</BentoCard2Col>
+		<BentoCard2Col >
 			<Fragment slot="text">
-				<h2 class="text-display-4">Settings position</h2>
+				<h2 class="text-display-4">Be simple</h2>
 				<p class="text-body-default">
-					The difference between business and profile settings needed to be clarified, and the fact that they are not snuggled together in the same place makes things worse. During testing some users looked for settings on the top right corner.
+					Use less colours and elements. Make the illustration noticeable without taking all the attention from the content they are supporting.
 				</p>
 			</Fragment>
 			<Fragment slot="media">
@@ -73,90 +84,62 @@ import img9 from '../assets/navigation/nav-new-sus.svg';
 			</Fragment>
 		</BentoCard2Col>
 	</BentoGrid>
-	
+
+	<BentoGrid dividers>
+		<BentoCard2Col dividers>
+			<Fragment slot="text">
+				<h2 class="text-display-4">Represent diversity</h2>
+				<p class="text-body-default">
+					Our new style is aspirational and diverse. The people that use Wave’s tools should see themselves reflected in the illustrations.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img4.src} width="100%" alt="Screenshot of the menu toggle issue on mobile." />
+			</Fragment>
+		</BentoCard2Col>
+		<BentoCard2Col >
+			<Fragment slot="text">
+				<h2 class="text-display-4">Communicate effectively</h2>
+				<p class="text-body-default">
+					With the new style, we aim to represent ideas in a fantastical form that enables us to convey complex concepts in a simple way.
+				</p>
+			</Fragment>
+			<Fragment slot="media">
+				<img src={img5.src} width="100%" alt="Screenshot of the old settings placement." />
+			</Fragment>
+		</BentoCard2Col>
+	</BentoGrid>
+
 	<BentoGrid dividers>
 		<BentoCard2Col>
 			<Fragment slot="text">
-				<h2 class="text-display-4">Old navigation SUS score</h2>
+				<h2 class="text-display-3">Implementation</h2>
 				<p class="text-body-default">
-					We conducted usability tests on the old navigation to set a baseline SUS score. Desktop scored above average, mobile due to the toggle issues mentioned above scored below average. 
+					Before the redesign, all assets were hard-coded on the app. Updating illustrations was a huge endeavour, demanding constant auditing and many developer hours to achieve it.
+				</p>
+				<p class="text-body-default">
+					To fix this issue we created a  centralized illustrations repository and a React component to add illustrations on the app. The new structure gives the design systems team flexibility to manage and update illustrations without the support of the product teams.
 				</p>
 			</Fragment>
 			<Fragment slot="media">
-				<img src={img4.src} width="90%" alt="An image showing the old navigation SUS score. Desktop scored 74 out of 100. Mobile scored 62 out of 100." />
+				<img src={img6.src} width="90%" alt="A chart of the design system's structure at Wave" />
 			</Fragment>
 		</BentoCard2Col>
 	</BentoGrid>
-	
-	<BentoGrid dividers>
-		<BentoCard2Row>
-			<Fragment slot="text">
-				<h2 class="text-display-3">The new navigation</h2>
-				<p class="text-body-default">
-					Wave's new navigation system is the result of the effort of a two-week swarm where we did a little bit of everything: brainstorming sessions, reference research, Crazy 8's, and more. We built ten low-fidelity prototypes in one week and tested them with over fifty-five users, optimizing each prototype until we landed on the navigation system we've since shipped. Here are the changes.
-				</p>
-			</Fragment>
-			<Fragment slot="media">
-				<img src={img5.src} width="90%" alt="A wireframe showing the new receipt scan flow." />
-			</Fragment>
-		</BentoCard2Row>
-	</BentoGrid>
-	
-	<BentoGrid dividers>
-		<BentoCard2Row>
-			<Fragment slot="text">
-				<h2 class="text-display-4">Top navigation bar</h2>
-				<p class="text-body-default">
-					We added a new top bar that can support and house future features (part of our product vision), and a settings dropdown menu in the top-right corner where we grouped business and profile settings together, making it easier for people to find what they need.
-				</p>
-			</Fragment>
-			<Fragment slot="media">
-				<img src={img6.src} width="90%" alt="A screenshot showing the new top navigation bar." />
-			</Fragment>
-		</BentoCard2Row>
-	</BentoGrid>
 
 	<BentoGrid dividers>
-		<BentoCard2Col dividers zoomable>
-			<Fragment slot="text">
-				<h2 class="text-display-4">Left menu bar</h2>
-				<p class="text-body-default">
-					The left bar is now collapsible, has a white  background, and is thinner. Those changes aim to reduce the cognitive load of information-dense areas like accounting and invoicing.
-				</p>
-				<p class="text-body-default">
-					It also opens up the possibility of collapsing the menu by default in some areas like settings.
-				</p>
-			</Fragment>
-			<Fragment slot="media">
-				<img src={img7.src} width="100%" alt="Screenshot of the menu toggle issue on mobile." />
-			</Fragment>
-		</BentoCard2Col>
-		<BentoCard2Row width={40} zoomable>
-			<Fragment slot="text">
-				<h2 class="text-display-4">Mobile responsive</h2>
-				<p class="text-body-default">
-					On the mobile responsive version, we moved the navigation bar to the bottom of the screen and kept the menu at thumb's reach. Now the toggle button stays in the same place, no matter the state.
-				</p>
-			</Fragment>
-			<Fragment slot="media">
-				<img src={img8.src} width="100%" alt="Screenshot of the old settings placement." />
-			</Fragment>
-		</BentoCard2Row>
-	</BentoGrid>
-
-	<BentoGrid>
 		<BentoCard2Col>
 			<Fragment slot="text">
 				<h2 class="text-display-3">Results</h2>
 				<p class="text-body-default">
-					Here's how the new navigation performs compared to the old version. Even though some Wave users who tested the new navigation mentioned they didn't see much change at first, their responses to the SUS survey told a different story.
+					We did user interviews to measure their perception of the new illustrations. We hada very positive response from our users.
 				</p>
 				<p class="text-body-default">
-					We are already working on various updates and are looking to improve settings and the business selection even further.
+					Marketing A/B tested the illustrations on our public site and they achieved 4.6% more signups than a hero variant with a photo.
 				</p>
 			</Fragment>
 			<Fragment slot="media">
-				<img src={img9.src} width="90%" alt="An image showing the old navigation SUS score. Desktop scored 74 out of 100. Mobile scored 62 out of 100." />
+				<img src={img7.src} width="100%" alt="A chart of the design system's structure at Wave" />
 			</Fragment>
 		</BentoCard2Col>
 	</BentoGrid>
