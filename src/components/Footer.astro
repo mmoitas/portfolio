@@ -7,28 +7,30 @@ const { class: className } = Astro.props;
 ---
 
 <footer class:list={['footer', className]}>
-	<h2 class="footer-title">
-		<slot>Want to know more?<br />Let’s talk!</slot>
-	</h2>
-	<ul class="contact">
-		<li>
-			<a href="mailto:mmoitas@gmail.com" class="contact-link">
-				<img src="/images/icons/mail-small.svg" alt="" width="32" height="32" />
-				<span>mmoitas@gmail.com</span>
-			</a>
-		</li>
-		<li>
-			<a
-				href="https://linkedin.com/in/moitas/"
-				class="contact-link"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<img src="/images/icons/linkedin-small.svg" alt="" width="32" height="32" />
-				<span>linkedin.com/in/moitas/</span>
-			</a>
-		</li>
-	</ul>
+	<div class="content">
+		<h2 class="footer-title">
+			<slot>Want to know more?<br />Let’s talk!</slot>
+		</h2>
+		<ul class="contact">
+			<li>
+				<a href="mailto:mmoitas@gmail.com" class="contact-link">
+					<img src="/images/icons/mail-small.svg" alt="" width="32" height="32" />
+					<span>mmoitas@gmail.com</span>
+				</a>
+			</li>
+			<li>
+				<a
+					href="https://linkedin.com/in/moitas/"
+					class="contact-link"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<img src="/images/icons/linkedin-small.svg" alt="" width="32" height="32" />
+					<span>linkedin.com/in/moitas/</span>
+				</a>
+			</li>
+		</ul>
+	</div>
 </footer>
 
 <style>
@@ -36,11 +38,21 @@ const { class: className } = Astro.props;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: var(--space-10);
 		width: 100%;
 		padding: var(--space-12) var(--space-16);
 		background-color: var(--surface-color-9);
 		color: var(--text-color-tertiary);
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: var(--space-10);
+		width: 100%;
+		max-width: 1920px;
+		margin: 0 auto;
+		padding: 0 var(--space-8);
 	}
 
 	.footer-title {
