@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"\\\\\\\\\\\\\\\\wsl.localhost\\\\\\\\Ubuntu\\\\\\\\home\\\\\\\\mmoitas\\\\\\\\portfolio\" 2>/dev/null || ls -la /home/mmoitas/portfolio 2>/dev/null || pwd)",
+      "Read(///wsl.localhost/Ubuntu/home/mmoitas/**)",
+      "WebFetch(domain:www.figma.com)"
+    ]
+  }
+}
