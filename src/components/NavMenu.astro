@@ -1,0 +1,229 @@
+---
+// Figma "dropdownNavMenu" (node 152:202). Full-screen menu, rendered once in
+// Layout.astro and opened by the .nav-button in Navigation.astro.
+import ProjectCard from './ProjectCard.astro';
+---
+
+<dialog class="nav-menu" id="nav-menu" aria-label="Site menu">
+	<div class="nav-menu-panel">
+		<div class="nav-menu-header">
+			<a href="/" class="nav-menu-item">
+				<img src="/images/icons/home-small.svg" alt="" width="32" height="32" />
+				Home
+			</a>
+			<button type="button" class="nav-menu-close" aria-label="Close menu">
+				<img src="/images/icons/close-small.svg" alt="" width="32" height="32" />
+			</button>
+		</div>
+		<div class="nav-menu-grid">
+			<ProjectCard href="/wave-dashboard-vision" image="/images/projects/dashboard.svg">
+				Wave dashboard vision
+			</ProjectCard>
+			<ProjectCard href="/wave-design-systems" image="/images/projects/design-systems.svg">
+				Wave design systems
+			</ProjectCard>
+			<ProjectCard href="/wave-illustrations" image="/images/projects/illustrations.svg">
+				Wave illustrations
+			</ProjectCard>
+			<ProjectCard href="/whisky-lovers" image="/images/projects/whisky-lovers.svg">
+				Johnnie Walkers’ Whisky Lovers
+			</ProjectCard>
+			<ProjectCard href="/wave-navigation" image="/images/projects/navigation.svg">
+				Wave navigation
+			</ProjectCard>
+		</div>
+	</div>
+</dialog>
+
+<style>
+	.nav-menu {
+		width: 100%;
+		max-width: none;
+		height: 100dvh;
+		max-height: none;
+		margin: 0;
+		padding: 0;
+		border: none;
+		background-color: var(--surface-color-9);
+		color: var(--text-color-tertiary);
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		scrollbar-color: var(--neutral-600) var(--surface-color-9);
+		scrollbar-width: thin;
+	}
+
+	/* The menu covers the whole screen, so no visible overlay is needed. */
+	.nav-menu::backdrop {
+		background: transparent;
+	}
+
+	/* Slide down: slide in on open. The script adds .is-closing and waits for
+	   the slide-up to finish before actually closing the dialog. */
+	.nav-menu[open] {
+		animation: nav-menu-slide-in 300ms ease-out;
+	}
+
+	.nav-menu.is-closing {
+		animation: nav-menu-slide-out 250ms ease-in forwards;
+	}
+
+	@keyframes nav-menu-slide-in {
+		from {
+			transform: translateY(-100%);
+		}
+	}
+
+	@keyframes nav-menu-slide-out {
+		to {
+			transform: translateY(-100%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.nav-menu[open],
+		.nav-menu.is-closing {
+			animation: none;
+		}
+	}
+
+	.nav-menu-panel {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-8);
+		max-width: 1920px;
+		margin: 0 auto;
+		padding: var(--space-6) var(--space-16) var(--space-12);
+	}
+
+	.nav-menu-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 64px;
+	}
+
+	/* Figma "menuItem" (node 83:126), showIcon=true. */
+	.nav-menu-item {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		height: 64px;
+		border-radius: var(--space-4);
+		font-family: var(--font-family-body);
+		font-size: var(--body-large-font-size);
+		line-height: var(--body-large-line-height);
+		font-weight: 700;
+		font-variation-settings: 'wdth' 100;
+		color: var(--text-color-tertiary);
+		text-decoration: none;
+		white-space: nowrap;
+		transition: background-color 150ms ease;
+	}
+
+	.nav-menu-item:hover,
+	.nav-menu-item:focus-visible {
+		background-color: var(--neutral-700);
+	}
+
+	.nav-menu-item img,
+	.nav-menu-close img {
+		display: block;
+	}
+
+	.nav-menu-close {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 48px;
+		height: 48px;
+		margin-right: calc(-1 * var(--space-2));
+		padding: 0;
+		border: none;
+		background: none;
+		cursor: pointer;
+	}
+
+	.nav-menu-item:focus-visible,
+	.nav-menu-close:focus-visible {
+		outline: 2px solid var(--text-color-tertiary);
+		outline-offset: 2px;
+	}
+
+	.nav-menu-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: var(--space-8);
+	}
+
+	@media (max-width: 1024px) {
+		.nav-menu-grid {
+			grid-template-columns: minmax(0, 1fr);
+			gap: var(--space-4);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.nav-menu-panel {
+			gap: var(--space-4);
+			padding: var(--space-4) var(--space-6) var(--space-8);
+		}
+	}
+</style>
+
+<script>
+	const menu = document.querySelector<HTMLDialogElement>('.nav-menu');
+	const openButton = document.querySelector<HTMLButtonElement>('.nav-button');
+	const closeButton = menu?.querySelector<HTMLButtonElement>('.nav-menu-close');
+
+	if (menu && openButton && closeButton) {
+		const setExpanded = (expanded: boolean) =>
+			openButton.setAttribute('aria-expanded', String(expanded));
+
+		// The page keeps its scrollbar while the menu is open (hiding it shifts the
+		// layout), so it can still be scrolled behind the menu. Put it back on close.
+		let pageScrollY = 0;
+		const restorePageScroll = () => window.scrollTo(window.scrollX, pageScrollY);
+
+		openButton.addEventListener('click', () => {
+			pageScrollY = window.scrollY;
+			menu.classList.remove('is-closing');
+			menu.showModal();
+			menu.scrollTop = 0;
+			setExpanded(true);
+		});
+
+		// Play the slide-up, then close for real.
+		const closeMenu = () => {
+			if (!menu.open || menu.classList.contains('is-closing')) return;
+			restorePageScroll();
+			if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				menu.close();
+				return;
+			}
+			menu.classList.add('is-closing');
+			const finish = () => {
+				clearTimeout(fallback);
+				menu.removeEventListener('animationend', finish);
+				menu.classList.remove('is-closing');
+				menu.close();
+			};
+			// Fallback in case the animation never runs (e.g. animations disabled in the browser).
+			const fallback = setTimeout(finish, 350);
+			menu.addEventListener('animationend', finish);
+		};
+
+		closeButton.addEventListener('click', closeMenu);
+
+		// Esc would close the dialog instantly; route it through the slide instead.
+		menu.addEventListener('cancel', (event) => {
+			event.preventDefault();
+			closeMenu();
+		});
+
+		// Fires however the dialog ends up closed; showModal() returns focus to the nav button.
+		menu.addEventListener('close', () => {
+			restorePageScroll();
+			setExpanded(false);
+		});
+	}
+</script>

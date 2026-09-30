@@ -1,0 +1,67 @@
+---
+// Figma "projectCards" (node 146:83). The `hover` variant is the :hover /
+// :focus-visible background below, not a prop.
+export interface Props {
+	href: string;
+	/** Path to the 96px project illustration (Figma "imgProjects"). */
+	image: string;
+	class?: string;
+}
+
+const { href, image, class: className } = Astro.props;
+---
+
+<a href={href} class:list={['project-card', className]}>
+	<img src={image} alt="" class="project-card-image" width="96" height="96" />
+	<span class="project-card-title"><slot /></span>
+</a>
+
+<style>
+	.project-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+		min-width: 300px;
+		height: 300px;
+		padding: var(--space-8);
+		border: var(--stroke-size-default) solid var(--text-color-tertiary);
+		border-radius: 24px;
+		background-color: var(--surface-color-9);
+		color: var(--text-color-tertiary);
+		text-decoration: none;
+		overflow: hidden;
+		transition: background-color 150ms ease;
+	}
+
+	.project-card:hover,
+	.project-card:focus-visible {
+		background-color: var(--neutral-700);
+	}
+
+	.project-card:focus-visible {
+		outline: 2px solid var(--text-color-tertiary);
+		outline-offset: 4px;
+	}
+
+	.project-card-image {
+		display: block;
+		flex-shrink: 0;
+	}
+
+	/* Figma text style display/nav-title, in white and allowed to wrap. */
+	.project-card-title {
+		font-family: var(--font-family-display);
+		font-size: var(--nav-title-font-size);
+		line-height: var(--nav-title-line-height);
+		font-weight: var(--nav-title-font-weight);
+		overflow-wrap: break-word;
+	}
+
+	@media (max-width: 1024px) {
+		.project-card {
+			min-width: 0;
+			height: 200px;
+		}
+	}
+</style>
