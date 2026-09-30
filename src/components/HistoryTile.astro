@@ -1,0 +1,54 @@
+---
+// Figma "history tile" inside the About me section (node 127:96).
+export interface Props {
+	/** Path to the 80px icon shown at the top of the tile. */
+	icon: string;
+	class?: string;
+}
+
+const { icon, class: className } = Astro.props;
+---
+
+<li class:list={['history-tile', className]}>
+	<img src={icon} alt="" class="history-tile-icon" width="80" height="80" />
+	<p class="text-body-large history-tile-text"><slot /></p>
+</li>
+
+<style>
+	.history-tile {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: var(--space-8);
+		min-width: 0;
+		min-height: 332px;
+		/* Overrides the global li spacing; the grid gap handles it. */
+		margin: 0;
+		padding: var(--space-6);
+		border: 1px solid var(--stroke-color-primary);
+		border-radius: var(--space-4);
+	}
+
+	.history-tile-icon {
+		display: block;
+		flex-shrink: 0;
+	}
+
+	/* Figma lets this copy wrap naturally, not balanced like the header's. */
+	.history-tile-text {
+		text-wrap: pretty;
+	}
+
+	@media (max-width: 1024px) {
+		.history-tile {
+			min-height: 280px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.history-tile {
+			min-height: 0;
+		}
+	}
+</style>

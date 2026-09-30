@@ -1,0 +1,69 @@
+---
+// Figma "about-me" section (node 127:93). Put HistoryTile components in the
+// default slot. The title slot falls back to "About me".
+export interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<section class:list={['about-me', className]} aria-labelledby="about-me-title">
+	<h2 class="about-me-title" id="about-me-title"><slot name="title">About me</slot></h2>
+	<ul class="history-row">
+		<slot />
+	</ul>
+</section>
+
+<style>
+	.about-me {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		max-width: 1920px;
+		margin: 0 auto;
+		padding: var(--space-14);
+	}
+
+	/* Figma display/2 is 48px here. tokens.css --display-2 is still 56px (used
+	   by HeaderProject), so this size is set locally instead of from the token. */
+	.about-me-title {
+		margin: 0;
+		font-family: var(--font-family-display);
+		font-size: 48px;
+		line-height: var(--display-2-line-height);
+		font-weight: var(--display-2-font-weight);
+		color: var(--text-color-primary);
+	}
+
+	.history-row {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: var(--space-8);
+		margin: 0;
+		padding: var(--space-8) 0 0;
+		list-style: none;
+	}
+
+	@media (max-width: 1024px) {
+		.history-row {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 768px) {
+		.about-me {
+			padding: var(--space-12) var(--space-6);
+		}
+
+		.about-me-title {
+			font-size: 32px;
+		}
+
+		.history-row {
+			grid-template-columns: minmax(0, 1fr);
+			gap: var(--space-4);
+			padding-top: var(--space-6);
+		}
+	}
+</style>
