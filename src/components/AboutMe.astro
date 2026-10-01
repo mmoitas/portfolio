@@ -9,7 +9,6 @@ const { class: className } = Astro.props;
 ---
 
 <section class:list={['about-me', className]} aria-labelledby="about-me-title">
-	<h2 class="about-me-title" id="about-me-title"><slot name="title">About me</slot></h2>
 	<ul class="history-row">
 		<slot />
 	</ul>
@@ -22,7 +21,7 @@ const { class: className } = Astro.props;
 		width: 100%;
 		max-width: 1920px;
 		margin: 0 auto;
-		padding: var(--space-14);
+		padding-block: 0;
 	}
 
 	/* Figma display/2 is 48px here. tokens.css --display-2 is still 56px (used
@@ -52,9 +51,6 @@ const { class: className } = Astro.props;
 	}
 
 	@media (max-width: 768px) {
-		.about-me {
-			padding: var(--space-12) var(--space-6);
-		}
 
 		.about-me-title {
 			font-size: 32px;

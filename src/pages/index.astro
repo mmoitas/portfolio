@@ -2,6 +2,8 @@
 import AboutMe from '../components/AboutMe.astro';
 import HeaderMain from '../components/HeaderMain.astro';
 import HistoryTile from '../components/HistoryTile.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ProjectsHome from '../components/ProjectsHome.astro';
 import Layout from '../layouts/Layout.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -20,25 +22,44 @@ import Layout from '../layouts/Layout.astro';
 		<Fragment slot="media">
 			<img src="/images/header-main-illustration.svg" alt="" />
 		</Fragment>
+		<!--
+		<AboutMe>
+			<HistoryTile icon="/images/icons/advertising-80.svg">
+				Started my career in advertising working in ad agencies such as Euro RSCG (part of the
+				Havas group) and Editora Abril, at that time the biggest publishing company in South
+				America.
+			</HistoryTile>
+			<HistoryTile icon="/images/icons/product-design-80.svg">
+				Then pivoted into Product Design, where I worked in a design consultancy in São Paulo on
+				projects for companies like Diageo (Johnnie Walker), Samsung, Itaú (Brazilian bank), and
+				Vivo (Brazilian telecom).
+			</HistoryTile>
+			<HistoryTile icon="/images/icons/calendar-80.svg">
+				For the last nine years I’ve been working at Wave, a financial management SaaS product that
+				serves small businesses in Canada and the US.
+			</HistoryTile>
+			<HistoryTile icon="/images/icons/idea-80.svg">
+				Currently Director of Product Design leading our design vision, strategy, and Design
+				Systems practice across web and native mobile.
+			</HistoryTile>
+		</AboutMe>
+		 -->
 	</HeaderMain>
-	<AboutMe>
-		<HistoryTile icon="/images/icons/advertising-80.svg">
-			Started my career in advertising working in ad agencies such as Euro RSCG (part of the
-			Havas group) and Editora Abril, at that time the biggest publishing company in South
-			America.
-		</HistoryTile>
-		<HistoryTile icon="/images/icons/product-design-80.svg">
-			Then pivoted into Product Design, where I worked in a design consultancy in São Paulo on
-			projects for companies like Diageo (Johnnie Walker), Samsung, Itaú (Brazilian bank), and
-			Vivo (Brazilian telecom).
-		</HistoryTile>
-		<HistoryTile icon="/images/icons/calendar-80.svg">
-			For the last nine years I’ve been working at Wave, a financial management SaaS product that
-			serves small businesses in Canada and the US.
-		</HistoryTile>
-		<HistoryTile icon="/images/icons/idea-80.svg">
-			Currently Director of Product Design leading our design vision, strategy, and Design
-			Systems practice across web and native mobile.
-		</HistoryTile>
-	</AboutMe>
+	<ProjectsHome>
+		<ProjectCard theme="light" href="/wave-dashboard-vision" image="/images/projects/dashboard-dark.svg">
+			Wave dashboard vision
+		</ProjectCard>
+		<ProjectCard theme="light" href="/wave-design-systems" image="/images/projects/design-systems-dark.svg">
+			Wave design systems
+		</ProjectCard>
+		<ProjectCard theme="light" href="/wave-illustrations" image="/images/projects/illustrations-dark.svg">
+			Wave illustrations
+		</ProjectCard>
+		<ProjectCard theme="light" href="/whisky-lovers" image="/images/projects/whisky-lovers-dark.svg">
+			Johnnie Walker’s Whisky Lovers
+		</ProjectCard>
+		<ProjectCard theme="light" href="/wave-navigation" image="/images/projects/navigation-dark.svg">
+			Wave navigation
+		</ProjectCard>
+	</ProjectsHome>
 </Layout>

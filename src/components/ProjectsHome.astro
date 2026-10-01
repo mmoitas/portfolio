@@ -1,0 +1,61 @@
+---
+// Figma "projects-home" section (node 159:142). Put light ProjectCard
+// components in the default slot. The title slot falls back to "Projects".
+export interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<section class:list={['projects-home', className]} aria-labelledby="projects-home-title">
+	<h2 class="projects-home-title" id="projects-home-title"><slot name="title">Projects</slot></h2>
+	<div class="projects-home-grid">
+		<slot />
+	</div>
+</section>
+
+<style>
+	.projects-home {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		max-width: 1920px;
+		margin: 0 auto;
+		padding: var(--space-16);
+	}
+
+	/* Figma display/2 is 48px; see the same note in AboutMe.astro. */
+	.projects-home-title {
+		margin: 0;
+		font-family: var(--font-family-display);
+		font-size: 48px;
+		line-height: var(--display-2-line-height);
+		font-weight: var(--display-2-font-weight);
+		color: var(--text-color-primary);
+	}
+
+	.projects-home-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: var(--space-8);
+		padding-top: var(--space-6);
+	}
+
+	@media (max-width: 1024px) {
+		.projects-home-grid {
+			grid-template-columns: minmax(0, 1fr);
+			gap: var(--space-4);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.projects-home {
+			padding: var(--space-12) var(--space-6);
+		}
+
+		.projects-home-title {
+			font-size: 32px;
+		}
+	}
+</style>

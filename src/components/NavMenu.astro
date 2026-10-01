@@ -60,11 +60,11 @@ import ProjectCard from './ProjectCard.astro';
 	/* Slide down: slide in on open. The script adds .is-closing and waits for
 	   the slide-up to finish before actually closing the dialog. */
 	.nav-menu[open] {
-		animation: nav-menu-slide-in 300ms ease-out;
+		animation: nav-menu-slide-in 250ms ease-out;
 	}
 
 	.nav-menu.is-closing {
-		animation: nav-menu-slide-out 250ms ease-in forwards;
+		animation: nav-menu-slide-out 150ms ease-in forwards;
 	}
 
 	@keyframes nav-menu-slide-in {
@@ -165,7 +165,7 @@ import ProjectCard from './ProjectCard.astro';
 
 	@media (max-width: 768px) {
 		.nav-menu-panel {
-			gap: var(--space-4);
+			gap: var(--space-8);
 			padding: var(--space-4) var(--space-6) var(--space-8);
 		}
 	}

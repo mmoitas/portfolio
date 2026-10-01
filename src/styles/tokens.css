@@ -109,6 +109,7 @@ li:not(:last-child) {
 
 	/* Stroke */
 	--stroke-size-default: 1px;
+	--stroke-size-thick: 2px;
 }
 
 /* Typography utilities matching Figma text styles. Apply to whatever

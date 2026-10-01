@@ -1,17 +1,20 @@
 ---
 // Figma "projectCards" (node 146:83). The `hover` variant is the :hover /
-// :focus-visible background below, not a prop.
+// :focus-visible background below, not a prop. `theme="light"` is the
+// home-page version (Figma "projectCardsHome", node 159:142): dark text and
+// border on the page background. Pass it a dark (`*-dark.svg`) image.
 export interface Props {
 	href: string;
 	/** Path to the 96px project illustration (Figma "imgProjects"). */
 	image: string;
+	theme?: 'dark' | 'light';
 	class?: string;
 }
 
-const { href, image, class: className } = Astro.props;
+const { href, image, theme = 'dark', class: className } = Astro.props;
 ---
 
-<a href={href} class:list={['project-card', className]}>
+<a href={href} class:list={['project-card', `project-card--${theme}`, className]}>
 	<img src={image} alt="" class="project-card-image" width="96" height="96" />
 	<span class="project-card-title"><slot /></span>
 </a>
@@ -25,7 +28,7 @@ const { href, image, class: className } = Astro.props;
 		min-width: 300px;
 		height: 300px;
 		padding: var(--space-8);
-		border: var(--stroke-size-default) solid var(--text-color-tertiary);
+		border: var(--stroke-size-thick) solid var(--text-color-tertiary);
 		border-radius: 24px;
 		background-color: var(--surface-color-9);
 		color: var(--text-color-tertiary);
@@ -42,6 +45,21 @@ const { href, image, class: className } = Astro.props;
 	.project-card:focus-visible {
 		outline: 2px solid var(--text-color-tertiary);
 		outline-offset: 4px;
+	}
+
+	.project-card--light {
+		border-color: var(--text-color-primary);
+		background-color: transparent;
+		color: var(--text-color-primary);
+	}
+
+	.project-card--light:hover,
+	.project-card--light:focus-visible {
+		background-color: var(--neutral-50);
+	}
+
+	.project-card--light:focus-visible {
+		outline-color: var(--text-color-primary);
 	}
 
 	.project-card-image {
